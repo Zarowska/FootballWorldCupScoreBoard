@@ -69,4 +69,22 @@ public class FootballWorldCupScoreBoardTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    void parserShouldFindHomeTeamNameAndAwayTeamNameAndHomeTeamScoreAwayTeamScore(){
+        ParserInputData  parser = new ParserInputData();
+        String input = "Mexico - Canada: 0 – 5";
+
+        String homeTeamName = parser.parseHomeTeamName(input) ;
+        String awayTeamName = parser.parseAwayTeamName(input) ;;
+        int homeTeamScore = parser.parseHomeTeamScore(input) ;;
+        int awayTeamScore = parser.parseAwayTeamScore(input) ;;
+
+        assertEquals("Mexico", homeTeamName);
+        assertEquals("Canada", awayTeamName);
+        assertEquals(0, homeTeamScore);
+        assertEquals(5, awayTeamScore);
+
+    }
+
+
 }
