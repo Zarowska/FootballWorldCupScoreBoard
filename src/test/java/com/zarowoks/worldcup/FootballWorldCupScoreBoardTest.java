@@ -72,7 +72,7 @@ public class FootballWorldCupScoreBoardTest {
     @Test
     void parserShouldFindHomeTeamNameAndAwayTeamNameAndHomeTeamScoreAwayTeamScore(){
         ParserInputData  parser = new ParserInputData();
-        String input = "Mexico - Canada: 0 – 5";
+        String input = "a. Mexico - Canada: 0 – 5";
 
         String homeTeamName = parser.parseHomeTeamName(input) ;
         String awayTeamName = parser.parseAwayTeamName(input) ;;
