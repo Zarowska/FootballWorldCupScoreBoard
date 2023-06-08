@@ -1,6 +1,7 @@
 package com.zarowoks.worldcup;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class CupBoard {
@@ -19,9 +20,16 @@ public class CupBoard {
         games.remove(game);
     }
 
-//TODO
     public List<GameBoard> getSummary() {
-        List<GameBoard> sortedGames = new ArrayList<>();
-        return games;
+        List<GameBoard> sortedGames = new ArrayList<>(games);
+
+        Collections.sort(sortedGames, (g1, g2) -> {
+            int compareByScore = Integer.compare(g2.getTotalScore(), g1.getTotalScore());
+            if (compareByScore == 0) {
+                return games.indexOf(g2) - games.indexOf(g1);
+            }
+            return compareByScore;
+        });
+        return sortedGames;
     }
 }

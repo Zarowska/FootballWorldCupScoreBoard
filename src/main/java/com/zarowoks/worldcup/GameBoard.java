@@ -1,5 +1,6 @@
 package com.zarowoks.worldcup;
 
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class GameBoard {
@@ -10,25 +11,31 @@ public class GameBoard {
     private int awayTeamScore;
 
 
-    public GameBoard(String homeTeamName, String awayTeamName){
-       this.homeTeamName =homeTeamName;
+    public GameBoard(String homeTeamName, String awayTeamName) {
+        this.homeTeamName = homeTeamName;
         this.awayTeamName = awayTeamName;
-        homeTeamScore=0;
-        awayTeamScore=0;
+        homeTeamScore = 0;
+        awayTeamScore = 0;
+
     }
 
     public GameBoard update(int scoreHomeTeam, int scoreAwayTeam) {
-        this.homeTeamScore =scoreHomeTeam;
-        this.awayTeamScore =scoreAwayTeam;
+        this.homeTeamScore = scoreHomeTeam;
+        this.awayTeamScore = scoreAwayTeam;
         return this;
+    }
+
+    public int getTotalScore() {
+        return homeTeamScore + awayTeamScore;
     }
 
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         return homeTeamName + " " + homeTeamScore + " - " + awayTeamName + " " + awayTeamScore;
+
     }
+
 
     @Override
     public int hashCode() {
@@ -48,7 +55,6 @@ public class GameBoard {
                 ;
 
     }
-
 
 
 }
