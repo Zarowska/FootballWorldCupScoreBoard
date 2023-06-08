@@ -12,7 +12,7 @@ public class FootballWorldCupScoreBoardTest {
 
 
     @Test
-    void shouldnotCreateGameThatAlreadyExists() throws Exception{
+    void shouldnotCreateGameThatAlreadyExists() {
         GameBoard board1 = cupBoard.start("Mexico", "Canada");
         assertNotNull(board1);
 
@@ -34,7 +34,7 @@ public class FootballWorldCupScoreBoardTest {
 
 
     @Test
-    void printGameSummary() throws Exception{
+    void printGameSummary() {
         String board1Summary = cupBoard.start("Mexico", "Canada").update(0, 5).toString();
         String board2Summary = cupBoard.start("Spain", "Brazil").update(10, 2).toString();
         String board3Summary = cupBoard.start("Germany", "France").update(2, 2).toString();
@@ -50,7 +50,7 @@ public class FootballWorldCupScoreBoardTest {
 
 
     @Test
-    void summaryShouldBeSortedByTotalScoreAndAddedTime() throws Exception{
+    void summaryShouldBeSortedByTotalScoreAndAddedTime() {
         GameBoard board1 = cupBoard.start("Mexico", "Canada").update(0, 5);
         GameBoard board2 = cupBoard.start("Spain", "Brazil").update(10, 2);
         GameBoard board3 = cupBoard.start("Germany", "France").update(2, 2);

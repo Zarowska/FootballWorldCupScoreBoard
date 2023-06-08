@@ -7,7 +7,7 @@ public class FootballWorldCupScoreBoard {
     private static CupBoard cupBoard = new CupBoard();
     private static ParserInputData parserInputData = new ParserInputData();
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
 
         String inputString1 = "a. Mexico - Canada: 0 – 5";
         String inputString2 = "b. Spain - Brazil: 10 – 2";

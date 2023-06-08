@@ -9,9 +9,9 @@ public class CupBoard {
     List<GameBoard> games = new ArrayList<>();
 
 
-    public GameBoard start(String homeTeamName, String awayTeamName) throws Exception {
+    public GameBoard start(String homeTeamName, String awayTeamName) {
         if (gameExistOnBoard(homeTeamName, awayTeamName)) {
-            throw new Exception("Game already exists on board.");
+            throw new IllegalArgumentException("Game already exists on board.");
 
         }
         GameBoard game = new GameBoard(homeTeamName, awayTeamName);
