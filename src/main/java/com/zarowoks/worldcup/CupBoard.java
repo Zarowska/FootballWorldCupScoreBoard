@@ -9,11 +9,23 @@ public class CupBoard {
     List<GameBoard> games = new ArrayList<>();
 
 
-    public GameBoard start(String homeTeamName, String awayTeamName) {
+    public GameBoard start(String homeTeamName, String awayTeamName) throws Exception {
+        if (gameExistOnBoard(homeTeamName, awayTeamName)) {
+            throw new Exception("Game already exists on board.");
+
+        }
         GameBoard game = new GameBoard(homeTeamName, awayTeamName);
         games.add(game);
         return game;
+    }
 
+    public boolean gameExistOnBoard(String homeTeamName, String awayTeamName) {
+        GameBoard game = games.stream()
+                .filter(e -> (e.getHomeTeamName().equals(homeTeamName) && e.getAwayTeamName().equals(awayTeamName)) || (e.getHomeTeamName().equals(awayTeamName) && e.getAwayTeamName().equals(homeTeamName)))
+                .findFirst()
+                .orElse(null);
+
+        return game != null;
     }
 
     public void finishGame(GameBoard game) {

@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class FootballWorldCupScoreBoardTest {
 
@@ -12,7 +12,29 @@ public class FootballWorldCupScoreBoardTest {
 
 
     @Test
-    void printGameSummary() {
+    void shouldnotCreateGameThatAlreadyExists() throws Exception{
+        GameBoard board1 = cupBoard.start("Mexico", "Canada");
+        assertNotNull(board1);
+
+        Exception exception = assertThrows(Exception.class, () -> {
+            cupBoard.start("Mexico", "Canada");
+        });
+        String expectedMessage = "Game already exists on board.";
+        String actualMessage = exception.getMessage();
+        assertEquals(expectedMessage, actualMessage);
+
+
+        Exception exception2 = assertThrows(Exception.class, () -> {
+            cupBoard.start("Canada", "Mexico");
+        });
+        String expectedMessage2 = "Game already exists on board.";
+        String actualMessage2 = exception2.getMessage();
+        assertEquals(expectedMessage2, actualMessage2);
+    }
+
+
+    @Test
+    void printGameSummary() throws Exception{
         String board1Summary = cupBoard.start("Mexico", "Canada").update(0, 5).toString();
         String board2Summary = cupBoard.start("Spain", "Brazil").update(10, 2).toString();
         String board3Summary = cupBoard.start("Germany", "France").update(2, 2).toString();
@@ -28,7 +50,7 @@ public class FootballWorldCupScoreBoardTest {
 
 
     @Test
-    void summaryShouldBeSortedByTotalScoreAndAddedTime() {
+    void summaryShouldBeSortedByTotalScoreAndAddedTime() throws Exception{
         GameBoard board1 = cupBoard.start("Mexico", "Canada").update(0, 5);
         GameBoard board2 = cupBoard.start("Spain", "Brazil").update(10, 2);
         GameBoard board3 = cupBoard.start("Germany", "France").update(2, 2);

@@ -29,6 +29,13 @@ public class GameBoard {
         return homeTeamScore + awayTeamScore;
     }
 
+    public String getHomeTeamName() {
+        return homeTeamName;
+    }
+
+    public String getAwayTeamName() {
+        return awayTeamName;
+    }
 
     @Override
     public String toString() {
